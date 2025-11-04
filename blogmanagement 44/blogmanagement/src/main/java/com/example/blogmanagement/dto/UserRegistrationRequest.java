@@ -1,0 +1,30 @@
+package com.example.blogmanagement.dto;
+
+import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class UserRegistrationRequest {
+
+    @Schema(description = "Unique username to identify the user", example = "sandraabatoni")
+    @NotBlank(message = "Username is required")
+    private String username;
+
+    @Schema(description = "User's email address", example = "sandra.abatoni@example.com")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email should be valid")
+    private String email;
+
+    @Schema(description = "User's plain text password", example = "password123")
+    @NotBlank(message = "Password is required")
+    private String password;
+}
